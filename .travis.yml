@@ -1,0 +1,17 @@
+# .travis.yml
+language: ruby
+rvm:
+  - 2.5.0
+sudo: false
+install: bundle
+script: jekyll build
+deploy:
+  provider: s3
+  access_key_id: $S3_ACCESS_KEY_ID
+  secret_access_key: $S3_SECRET_KEY
+  bucket: thehiddendimension.com
+  local_dir: _site
+  region: eu-central-1
+  skip_cleanup: true
+  on:
+    repo: joshuakarjala/thehiddendimension.com
